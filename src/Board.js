@@ -79,8 +79,8 @@
     //
     // test if a specific row on this board contains a conflict
     hasRowConflictAt: function(rowIndex) {
-      let currentBoard = this.attributes;
-      let filteredRow = currentBoard[rowIndex].filter(function(sqr) {
+
+      let filteredRow = this.get(rowIndex).filter(function(sqr) {
         return sqr !== 0 ? true : false;
       })
       // console.log(filteredRow);
@@ -92,13 +92,10 @@
 
     // test if any rows on this board contain conflicts
     hasAnyRowConflicts: function() {
-      let currentBoard = this.attributes;
-      for(let i = 0; i < currentBoard.n; i++) {
-        // console.log('unfiltered', currentBoard[i])
-        let filteredRow = currentBoard[i].filter(function(sqr) {
+      for(let i = 0; i < this.get('n'); i++) {
+        let filteredRow = this.get(i).filter(function(sqr) {
           return sqr !== 0 ? true : false;
         })
-        // console.log(filteredRow);
         if (filteredRow.length > 1) {
           return true;
         }
@@ -113,11 +110,9 @@
     //
     // test if a specific column on this board contains a conflict
     hasColConflictAt: function(colIndex) {
-      let currentBoard = this.attributes;
-
       let foundOne = false;
-      for(let i = 0; i < currentBoard.n; i++) {
-        if(currentBoard[i][colIndex] !== 0) {
+      for(let i = 0; i < this.get('n'); i++) {
+        if(this.get(i)[colIndex] !== 0) {
           if(foundOne) {
             return true;
           }
@@ -129,12 +124,10 @@
 
     // test if any columns on this board contain conflicts
     hasAnyColConflicts: function() {
-      let currentBoard = this.attributes;
-
-      for(let i = 0; i < currentBoard.n; i++) {
+      for(let i = 0; i < this.get('n'); i++) {
         let foundOne = false;
-        for(let j = 0; j < currentBoard.n; j++) {
-          if(currentBoard[j][i] !== 0) {
+        for(let j = 0; j < this.get('n'); j++) {
+          if(this.get(j)[i] !== 0) {
             if(foundOne) {
               return true;
             }
@@ -152,15 +145,12 @@
     //
     // test if a specific major diagonal on this board contains a conflict
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
-      let currentBoard = this.attributes;
-
       let currentX = 0;
       let currentY = majorDiagonalColumnIndexAtFirstRow;
       let foundOne = false;
 
-      while (currentX < currentBoard.n && currentY < currentBoard.n) {
-        console.log(currentX, currentY,currentBoard[currentX][currentY] )
-        if (currentBoard[currentX][currentY] !== 0 && currentBoard[currentX][currentY] !== undefined) {
+      while (currentX < this.get('n') && currentY < this.get('n')) {
+        if (this.get(currentX)[currentY] !== 0 && this.get(currentX)[currentY] !== undefined) {
           if(foundOne) {
             return true;
           }
@@ -174,19 +164,17 @@
 
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
-      let currentBoard = this.attributes;
-
-      let x = currentBoard.n - 1;
+      let x = this.get('n') - 1;
       let y = 0;
 
-      while(x > 0 || y < currentBoard.n) {
+      while(x > 0 || y < this.get('n')) {
 
         let currentX = x;
         let currentY = y;
         let foundOne = false;
 
-        while (currentX < currentBoard.n && currentY < currentBoard.n) {
-          if (currentBoard[currentX][currentY] !== 0) {
+        while (currentX < this.get('n') && currentY < this.get('n')) {
+          if (this.get(currentX)[currentY] !== 0) {
             if(foundOne) {
               return true;
             }
@@ -212,14 +200,12 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
-      let currentBoard = this.attributes;
-
       let currentX = 0;
       let currentY = minorDiagonalColumnIndexAtFirstRow;
       let foundOne = false;
 
-      while (currentX < currentBoard.n && currentY > -1) {
-        if (currentBoard[currentX][currentY] !== 0 && currentBoard[currentX][currentY] !== undefined) {
+      while (currentX < this.get('n') && currentY > -1) {
+        if (this.get(currentX)[currentY] !== 0 && this.get(currentX)[currentY] !== undefined) {
           if(foundOne) {
             return true;
           }
@@ -233,10 +219,8 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      let currentBoard = this.attributes;
-
-      let x = currentBoard.n - 1;
-      let y = currentBoard.n - 1;
+      let x = this.get('n') - 1;
+      let y = this.get('n') - 1;
 
       while(x > 0 || y > -1) {
 
@@ -244,8 +228,8 @@
         let currentY = y;
         let foundOne = false;
 
-        while (currentX < currentBoard.n && currentY > -1) {
-          if (currentBoard[currentX][currentY] !== 0) {
+        while (currentX < this.get('n') && currentY > -1) {
+          if (this.get(currentX)[currentY] !== 0) {
             if(foundOne) {
               return true;
             }
