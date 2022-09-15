@@ -37,10 +37,10 @@ window.findNRooksSolution = function(n) {
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
     //Time Complexity: O(n^2)
 window.countNRooksSolutions = function(n) {
-  var solutionCount = 0;
+  let solutionCount = 0;
   let solution = new Board({n});
 
-  var helper = (solution, row = 0, numRooks = 0) => {
+  let helper = (solution, row = 0, numRooks = 0) => {
 
     for(let j = 0; j < n; j++) {
       solution.togglePiece(row, j);
@@ -48,7 +48,7 @@ window.countNRooksSolutions = function(n) {
         solution.togglePiece(row, j);
         continue;
       }
-      numRooks++; //1
+      numRooks++;
       if(numRooks === n) {
         solutionCount++;
       } else {
