@@ -14,6 +14,7 @@
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
 
+    //Time Complexity: O(n^2)
 
 window.findNRooksSolution = function(n) {
 
@@ -34,6 +35,7 @@ window.findNRooksSolution = function(n) {
 };
 
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
+    //Time Complexity: O(n^2)
 window.countNRooksSolutions = function(n) {
   var solutionCount = 0;
   let solution = new Board({n});
@@ -64,6 +66,8 @@ window.countNRooksSolutions = function(n) {
 };
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
+    //Time Complexity: O(n^2)
+
 window.findNQueensSolution = function(n) {
   let solution = new Board({n});
   let answer = [];
@@ -102,6 +106,8 @@ window.findNQueensSolution = function(n) {
 };
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
+    //Time Complexity: O(n^2)
+
 window.countNQueensSolutions = function(n) {
   let solutionCount = 0;
   let solution = new Board({n});

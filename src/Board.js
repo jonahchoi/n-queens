@@ -78,6 +78,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific row on this board contains a conflict
+    //Time Complexity: O(n)
     hasRowConflictAt: function(rowIndex) {
 
       let filteredRow = this.get(rowIndex).filter(function(sqr) {
@@ -91,6 +92,8 @@
     },
 
     // test if any rows on this board contain conflicts
+    //Time Complexity: O(n^2)
+
     hasAnyRowConflicts: function() {
       for(let i = 0; i < this.get('n'); i++) {
         let filteredRow = this.get(i).filter(function(sqr) {
@@ -109,6 +112,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific column on this board contains a conflict
+    //Time Complexity: O(n)
     hasColConflictAt: function(colIndex) {
       let foundOne = false;
       for(let i = 0; i < this.get('n'); i++) {
@@ -123,6 +127,7 @@
     },
 
     // test if any columns on this board contain conflicts
+    //Time Complexity: O(n^2)
     hasAnyColConflicts: function() {
       for(let i = 0; i < this.get('n'); i++) {
         let foundOne = false;
@@ -144,6 +149,7 @@
     // --------------------------------------------------------------
     //
     // test if a specific major diagonal on this board contains a conflict
+    //Time Complexity: O(n)
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {
       let currentX = 0;
       let currentY = majorDiagonalColumnIndexAtFirstRow;
@@ -163,6 +169,7 @@
     },
 
     // test if any major diagonals on this board contain conflicts
+    //Time Complexity: O(n^2)
     hasAnyMajorDiagonalConflicts: function() {
       let x = this.get('n') - 1;
       let y = 0;
@@ -199,6 +206,8 @@
     // --------------------------------------------------------------
     //
     // test if a specific minor diagonal on this board contains a conflict
+    //Time Complexity: O(n)
+
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
       let currentX = 0;
       let currentY = minorDiagonalColumnIndexAtFirstRow;
@@ -218,6 +227,8 @@
     },
 
     // test if any minor diagonals on this board contain conflicts
+    //Time Complexity: O(n^2)
+
     hasAnyMinorDiagonalConflicts: function() {
       let x = this.get('n') - 1;
       let y = this.get('n') - 1;
